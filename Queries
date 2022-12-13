@@ -1,16 +1,17 @@
 CREATE DATABASE memento_mori;
 
-CREATE TABLE memento_mori.dbo.Inventory (
-ID                int             NOT NULL       PRIMARY KEY IDENTITY,
-Name              nvarchar(50)    NOT NULL,
-Amount            int             NOT NULL
-)
-
 CREATE TABLE memento_mori.dbo.BranchOffices (       
 ID                int             NOT NULL       PRIMARY KEY IDENTITY,
 Name              nvarchar(50)    NOT NULL,
 Address           nvarchar(50)    NOT NULL,
 Budget            float           NOT NULL
+)
+
+CREATE TABLE memento_mori.dbo.Inventory (
+ID                int             NOT NULL       PRIMARY KEY IDENTITY,
+Name              nvarchar(50)    NOT NULL,
+Amount            int             NOT NULL,
+BranchOfficeID    int             NOT NULL       FOREIGN KEY REFERENCES BranchOffices(ID)
 )
 
 CREATE TABLE memento_mori.dbo.BudgetHistory (       
@@ -48,6 +49,6 @@ CREATE TABLE memento_mori.dbo.Schedule(
 ID                int             NOT NULL       PRIMARY KEY IDENTITY,
 PatientID         int             NOT NULL       FOREIGN KEY REFERENCES Patients(ID),
 PostID            int             NOT NULL       FOREIGN KEY REFERENCES Personal(ID),
-Date              int             NOT NULL,
+Date              date            NOT NULL,
 Price             float           NOT NULL
 )
