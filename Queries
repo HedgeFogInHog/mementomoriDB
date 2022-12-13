@@ -17,7 +17,7 @@ BranchOfficeID    int             NOT NULL       FOREIGN KEY REFERENCES BranchOf
 CREATE TABLE memento_mori.dbo.BudgetHistory (       
 ID                int             NOT NULL       PRIMARY KEY IDENTITY,
 Action            nvarchar(50)    NOT NULL,
-Description       nvarchar(50)    NOT NULL,
+Description       nvarchar(200)    NOT NULL,
 BranchOfficeID    int             NOT NULL       FOREIGN KEY REFERENCES BranchOffices(ID)
 )
 
